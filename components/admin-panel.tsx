@@ -114,75 +114,75 @@ export default function AdminPanel({ onUploadSuccess, onLogout }: AdminPanelProp
   return (
     <div className="space-y-6">
       <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
-        <p className="text-muted-foreground">Upload PDF files to make them available to all users</p>
-      </div>
-
-      {/* Upload Area */}
-      <label
-        onDragEnter={handleDrag}
-        onDragLeave={handleDrag}
-        onDragOver={handleDrag}
-        onDrop={handleDrop}
-        className={`block border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
-          dragActive ? "border-primary bg-primary bg-opacity-5" : "hover:border-primary"
-        } ${uploading ? "opacity-50 pointer-events-none" : ""}`}
-        style={{
-          borderColor: dragActive ? "var(--primary)" : "var(--border)",
-        }}
-      >
-        <Upload className="w-12 h-12 mx-auto mb-3 text-primary" />
-        <p className="font-semibold text-foreground mb-1">
-          {uploading
-            ? "Uploading..."
-            : selectedFile
-              ? `Selected: ${selectedFile.name}`
-              : "Drop your PDF here or click to upload"}
-        </p>
-        <p className="text-sm text-muted-foreground">Maximum file size: 20MB</p>
-        <input
-          ref={setFileInput}
-          type="file"
-          accept="application/pdf"
-          onChange={handleChange}
-          disabled={uploading}
-          className="hidden"
-        />
-      </label>
-
-      {/* Success Message */}
-      {success && (
-        <div className="bg-green-50 border border-green-500 text-green-700 rounded-lg p-4 flex items-start gap-3">
-          <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-          <p className="text-sm font-semibold">PDF uploaded successfully</p>
+        <div>
+          <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
+          <p className="text-muted-foreground">Upload PDF files to make them available to all users</p>
         </div>
-      )}
 
-      {/* Error Message */}
-      {error && (
-        <div className="bg-red-50 border border-accent text-accent rounded-lg p-4 flex items-start gap-3">
-          <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
-          <p className="text-sm">{error}</p>
+        {/* Upload Area */}
+        <label
+          onDragEnter={handleDrag}
+          onDragLeave={handleDrag}
+          onDragOver={handleDrag}
+          onDrop={handleDrop}
+          className={`block border-2 border-dashed rounded-lg p-8 text-center cursor-pointer transition-colors ${
+            dragActive ? "border-primary bg-primary bg-opacity-5" : "hover:border-primary"
+          } ${uploading ? "opacity-50 pointer-events-none" : ""}`}
+          style={{
+            borderColor: dragActive ? "var(--primary)" : "var(--border)",
+          }}
+        >
+          <Upload className="w-12 h-12 mx-auto mb-3 text-primary" />
+          <p className="font-semibold text-foreground mb-1">
+            {uploading
+              ? "Uploading..."
+              : selectedFile
+                ? `Selected: ${selectedFile.name}`
+                : "Drop your PDF here or click to upload"}
+          </p>
+          <p className="text-sm text-muted-foreground">Maximum file size: 20MB</p>
+          <input
+            ref={setFileInput}
+            type="file"
+            accept="application/pdf"
+            onChange={handleChange}
+            disabled={uploading}
+            className="hidden"
+          />
+        </label>
+
+        {/* Success Message */}
+        {success && (
+          <div className="bg-green-50 border border-green-500 text-green-700 rounded-lg p-4 flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+            <p className="text-sm font-semibold">PDF uploaded successfully</p>
+          </div>
+        )}
+
+        {/* Error Message */}
+        {error && (
+          <div className="bg-red-50 border border-accent text-accent rounded-lg p-4 flex items-start gap-3">
+            <AlertCircle className="w-5 h-5 flex-shrink-0 mt-0.5" />
+            <p className="text-sm">{error}</p>
+          </div>
+        )}
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={uploading || !selectedFile}
+          className="w-full bg-primary hover:bg-primary-light text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {uploading ? "Uploading..." : "Upload PDF"}
+        </button>
+
+        {/* Info Box */}
+        <div className="bg-primary-light bg-opacity-10 border border-primary-light rounded-lg p-4">
+          <p className="text-sm text-foreground">
+            <span className="font-semibold">Tip:</span> You can drag and drop a PDF file directly onto the upload area, or
+            click to browse your device. Then click "Upload PDF" to submit.
+          </p>
         </div>
-      )}
-
-      {/* Submit Button */}
-      <button
-        type="submit"
-        disabled={uploading || !selectedFile}
-        className="w-full bg-primary hover:bg-primary-light text-white font-semibold py-3 rounded-lg transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-      >
-        {uploading ? "Uploading..." : "Upload PDF"}
-      </button>
-
-      {/* Info Box */}
-      <div className="bg-primary-light bg-opacity-10 border border-primary-light rounded-lg p-4">
-        <p className="text-sm text-foreground">
-          <span className="font-semibold">Tip:</span> You can drag and drop a PDF file directly onto the upload area, or
-          click to browse your device. Then click "Upload PDF" to submit.
-        </p>
-      </div>
       </form>
 
       {/* Logout Button */}
