@@ -10,7 +10,7 @@ interface AdminLoginProps {
   onBack?: () => void
 }
 
-export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
+export default function AdminLogin({ onLoginSuccess, onBack }: AdminLoginProps) {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
   const [error, setError] = useState("")
