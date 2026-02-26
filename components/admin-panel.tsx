@@ -112,7 +112,8 @@ export default function AdminPanel({ onUploadSuccess, onLogout }: AdminPanelProp
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <div className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <h2 className="text-2xl font-bold mb-4">Admin Panel</h2>
         <p className="text-muted-foreground">Upload PDF files to make them available to all users</p>
@@ -182,15 +183,16 @@ export default function AdminPanel({ onUploadSuccess, onLogout }: AdminPanelProp
           click to browse your device. Then click "Upload PDF" to submit.
         </p>
       </div>
-    </form>
+      </form>
 
-    {/* Logout Button */}
-    <button
-      onClick={onLogout}
-      className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-6"
-    >
-      <LogOut className="w-5 h-5" />
-      Logout
-    </button>
+      {/* Logout Button */}
+      <button
+        onClick={onLogout}
+        className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2"
+      >
+        <LogOut className="w-5 h-5" />
+        Logout
+      </button>
+    </div>
   )
 }
