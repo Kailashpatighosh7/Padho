@@ -2,14 +2,15 @@
 
 import type React from "react"
 
-import { Upload, AlertCircle, CheckCircle } from "lucide-react"
+import { Upload, AlertCircle, CheckCircle, LogOut } from "lucide-react"
 import { useState } from "react"
 
 interface AdminPanelProps {
   onUploadSuccess: () => void
+  onLogout: () => void
 }
 
-export default function AdminPanel({ onUploadSuccess }: AdminPanelProps) {
+export default function AdminPanel({ onUploadSuccess, onLogout }: AdminPanelProps) {
   const [uploading, setUploading] = useState(false)
   const [error, setError] = useState("")
   const [success, setSuccess] = useState(false)
@@ -182,5 +183,14 @@ export default function AdminPanel({ onUploadSuccess }: AdminPanelProps) {
         </p>
       </div>
     </form>
+
+    {/* Logout Button */}
+    <button
+      onClick={onLogout}
+      className="w-full bg-red-500 hover:bg-red-600 text-white font-semibold py-3 rounded-lg transition-colors flex items-center justify-center gap-2 mt-6"
+    >
+      <LogOut className="w-5 h-5" />
+      Logout
+    </button>
   )
 }

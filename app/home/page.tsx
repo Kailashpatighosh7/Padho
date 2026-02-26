@@ -74,7 +74,7 @@ export default function HomePage() {
       {/* Content */}
       <main className="max-w-2xl mx-auto px-4 py-6">
         {showAdmin ? (
-          <AdminPanel onUploadSuccess={loadPDFs} />
+          <AdminPanel onUploadSuccess={loadPDFs} onLogout={() => { setAdminLoggedIn(false); setShowAdmin(false); }} />
         ) : (
           <>
             {loading ? (
