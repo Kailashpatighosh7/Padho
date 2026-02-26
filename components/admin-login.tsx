@@ -2,11 +2,12 @@
 
 import type React from "react"
 
-import { Lock, AlertCircle } from "lucide-react"
+import { Lock, AlertCircle, ArrowLeft } from "lucide-react"
 import { useState } from "react"
 
 interface AdminLoginProps {
   onLoginSuccess: () => void
+  onBack?: () => void
 }
 
 export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
@@ -33,6 +34,17 @@ export default function AdminLogin({ onLoginSuccess }: AdminLoginProps) {
     <div className="flex items-center justify-center min-h-screen bg-background p-4">
       <div className="w-full max-w-md">
         <div className="bg-white border rounded-lg p-8 shadow-lg">
+          {/* Back Button */}
+          {onBack && (
+            <button
+              onClick={onBack}
+              className="flex items-center gap-2 text-primary hover:text-primary-light transition-colors mb-6 text-sm font-semibold"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Home
+            </button>
+          )}
+
           {/* Header */}
           <div className="flex items-center justify-center mb-6">
             <Lock className="w-8 h-8 text-primary mr-3" />

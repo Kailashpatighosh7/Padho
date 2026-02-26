@@ -36,7 +36,7 @@ export default function HomePage() {
   const filteredPdfs = pdfs.filter((pdf) => pdf.name.toLowerCase().includes(searchQuery.toLowerCase()))
 
   if (showAdmin && !adminLoggedIn) {
-    return <AdminLogin onLoginSuccess={() => setAdminLoggedIn(true)} />
+    return <AdminLogin onLoginSuccess={() => setAdminLoggedIn(true)} onBack={() => setShowAdmin(false)} />
   }
 
   return (
