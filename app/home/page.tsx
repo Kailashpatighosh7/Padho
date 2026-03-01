@@ -36,7 +36,7 @@ export default function HomePage() {
   const filteredPdfs = pdfs.filter((pdf) => pdf.name.toLowerCase().includes(searchQuery.toLowerCase()))
 
   if (showAdmin && !adminLoggedIn) {
-    return <AdminLogin onLoginSuccess={() => setAdminLoggedIn(true)} />
+    return <AdminLogin onLoginSuccess={() => setAdminLoggedIn(true)} onBack={() => setShowAdmin(false)} />
   }
 
   return (
@@ -74,7 +74,7 @@ export default function HomePage() {
       {/* Content */}
       <main className="max-w-2xl mx-auto px-4 py-6">
         {showAdmin ? (
-          <AdminPanel onUploadSuccess={loadPDFs} />
+          <AdminPanel onUploadSuccess={loadPDFs} onLogout={() => { setAdminLoggedIn(false); setShowAdmin(false); }} />
         ) : (
           <>
             {loading ? (
